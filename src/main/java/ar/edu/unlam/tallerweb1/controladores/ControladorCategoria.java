@@ -30,16 +30,6 @@ public class ControladorCategoria {
 		this.servicioCategoria = servicioCategoria;
 	}
 
-
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String mostrarCategoria(Model model) {
-
-		List<Categoria> categorias = obtenerLista();
-
-		model.addAttribute("categorias", categorias);
-
-		return "home";
-	}
 //	@RequestMapping(value = "/home", method = RequestMethod.GET)
 //	public String mostrarCategoria(Model model) {
 //		List<Categoria> categorias = obtenerLista();
@@ -50,9 +40,6 @@ public class ControladorCategoria {
 //	}
 	@RequestMapping(value = "/categorias", method = RequestMethod.GET)
 	public ModelAndView mostrarCategoriaSeleccionada() {
-		
-		
-
 		return new ModelAndView("home");
 	}
 
