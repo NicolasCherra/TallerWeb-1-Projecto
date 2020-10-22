@@ -6,5 +6,6 @@ import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
 
 public interface ServicioCajaDeRegalo {
 	List<CajaDeRegalo> obtenerLista();
+	CajaDeRegalo buscarCajaPorNumero(Integer numeroCaja);
 	
 }

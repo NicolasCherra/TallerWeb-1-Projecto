@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,15 @@ public class RepositorioCajaDeRegaloImpl implements RepositorioCajaDeRegalo {
 	public List<CajaDeRegalo> obtenerLista() {
 		final Session session = sessionFactory.getCurrentSession();
 		return session.createCriteria(CajaDeRegalo.class).list();
+	}
+
+	@Override
+	public CajaDeRegalo buscarCajaPorNumero(Integer numeroCaja) {
+		final Session session = sessionFactory.getCurrentSession();
+		return (CajaDeRegalo) session
+				.createCriteria(CajaDeRegalo.class)
+				.add(Restrictions.eq("numeroDeCaja", numeroCaja))
+				.uniqueResult();
 	}
 
 }

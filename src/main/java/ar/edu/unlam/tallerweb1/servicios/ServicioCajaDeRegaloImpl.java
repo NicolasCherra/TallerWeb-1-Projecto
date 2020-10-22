@@ -26,4 +26,9 @@ public class ServicioCajaDeRegaloImpl implements ServicioCajaDeRegalo {
 		return servicioCajaDeRegaloDAO.obtenerLista();
 	}
 
+	@Override
+	public CajaDeRegalo buscarCajaPorNumero(Integer numeroCaja) {
+		return this.servicioCajaDeRegaloDAO.buscarCajaPorNumero(numeroCaja);
+	}
+
 }
