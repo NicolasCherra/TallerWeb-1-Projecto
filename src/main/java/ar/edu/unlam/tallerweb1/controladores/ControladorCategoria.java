@@ -15,20 +15,19 @@ import ar.edu.unlam.tallerweb1.modelo.Categoria;
 
 @Controller
 public class ControladorCategoria {
-
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String mostrarCategoria(Model model) {
-
-		List<Categoria> categorias = obtenerLista();
-
-		model.addAttribute("categorias", categorias);
-
-		return "home";
-	}
+	
+//	@RequestMapping(value = "/home", method = RequestMethod.GET)
+//	public String mostrarCategoria(Model model) {
+//		List<Categoria> categorias = obtenerLista();
+//
+//		model.addAttribute("categorias", categorias);
+//
+//		return "home";
+//	}
 	
 	@RequestMapping(value = "/categorias", method = RequestMethod.GET)
 	public ModelAndView mostrarCategoriaSeleccionada() {
-
+		
 		
 
 		return new ModelAndView("home");
@@ -42,7 +41,7 @@ public class ControladorCategoria {
 			Categoria curso = new Categoria();
 			curso.setId(1);
 			curso.setTipo("Cursos");
-			curso.setDescripcion("Los mejores cursos para adquirir habilidades nuevas y únicas");
+			curso.setDescripcion("Los mejores cursos para adquirir habilidades nuevas y ï¿½nicas");
 			curso.setImagen("https://i.postimg.cc/gkcdjjQr/cursos.jpg");
 
 			Categoria entretenimiento = new Categoria();
@@ -54,7 +53,7 @@ public class ControladorCategoria {
 			Categoria relax = new Categoria();
 			relax.setId(3);
 			relax.setTipo("Relax");
-			relax.setDescripcion("Siempre es buen momento para relajarse, elegí uno de los mejores regalos!");
+			relax.setDescripcion("Siempre es buen momento para relajarse, elegï¿½ uno de los mejores regalos!");
 			relax.setImagen("https://i.postimg.cc/VvrpPpD8/spa.jpg");
 			
 			lista.add(curso);
@@ -64,7 +63,7 @@ public class ControladorCategoria {
 			return lista;
 
 		} catch (Exception e) {
-			System.out.println("Ocurrrió un error inesperado, intente nuevamente");
+			System.out.println("Ocurrriï¿½ un error inesperado, intente nuevamente");
 			return null;
 		}
 	}
