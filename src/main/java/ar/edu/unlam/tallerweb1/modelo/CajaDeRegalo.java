@@ -15,7 +15,9 @@ public class CajaDeRegalo {
 	private Integer numeroDeCaja;
 	private String nombre;
 	private String descripcion;
-	private Double precio;
+	private Integer precio;
+	private Integer cantidadPersonas;
+	private String imagen;
 	// private Categoria categoria;
 
 	/*
@@ -47,11 +49,29 @@ public class CajaDeRegalo {
 		this.descripcion = descripcion;
 	}
 
-	public Double getPrecio() {
+	public Integer getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(Double precio) {
+	public void setPrecio(Integer precio) {
 		this.precio = precio;
 	}
+
+	public Integer getCantidadPersonas() {
+		return cantidadPersonas;
+	}
+
+	public void setCantidadPersonas(Integer cantidadPersonas) {
+		this.cantidadPersonas = cantidadPersonas;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	
+	
 }

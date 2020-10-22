@@ -20,18 +20,21 @@
 		</div>
 
 		<div class="card-deck">
-			<c:forEach items="${categorias}" var="categoria">
+			<c:forEach items="${cajas}" var="caja">
 				<div class="card">
 					<div class="card-img">
-						<img src="${categoria.imagen}"
+						<img src="${caja.imagen}"
 							class="card-img-top img-fluid">
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">${categoria.tipo}</h5>
-						<p class="card-text">${categoria.descripcion}</p>
+						<h5 class="card-title">${caja.nombre}</h5>
+						<p class="card-text">${caja.descripcion}</p>
 					</div>
 					<div class="card-footer">
-						<a href="categorias" class="btn btn-primary w-100">Ver más</a>
+					<form:form  method="POST" action="mostrarCaja" modelAttribute="CajaDeRegalo"> 
+						<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}"/>
+						<form:button class="btn btn-primary w-100" type="submit">Ver más</form:button>
+					</form:form >
 					</div>
 				</div>
 			</c:forEach>
