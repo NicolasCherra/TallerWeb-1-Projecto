@@ -35,4 +35,16 @@ public class RepositorioCajaDeRegaloImpl implements RepositorioCajaDeRegalo {
 				.uniqueResult();
 	}
 
+	@Override
+	public Boolean crearCajaDeRegalo(CajaDeRegalo cajaDeRegalo) {
+		final Session session = sessionFactory.getCurrentSession();
+		try {
+			session.save(cajaDeRegalo);
+			return true;
+		}catch(Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+
 }

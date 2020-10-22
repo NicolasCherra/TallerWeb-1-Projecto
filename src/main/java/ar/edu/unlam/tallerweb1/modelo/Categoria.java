@@ -15,7 +15,7 @@ public class Categoria {
 	private Integer id;
 	private String tipo;
 	private String descripcion;
-	private String imagen = "cursos.jpg";
+	private String imagen;
 	
 	public Integer getId() {
 		return id;

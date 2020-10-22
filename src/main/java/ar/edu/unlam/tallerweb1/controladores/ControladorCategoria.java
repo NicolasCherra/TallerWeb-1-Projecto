@@ -77,18 +77,21 @@ public class ControladorCategoria {
 			return null;
 		}
 	}
-	@RequestMapping(value = "/crear-categorias", method = RequestMethod.POST)
-	public ModelAndView crearCategoria(@ModelAttribute("categoria") Categoria categoria, HttpServletRequest request) {
-		ModelMap model = new ModelMap();
-		servicioCategoria.guardarCategoria(categoria);
-		return new ModelAndView("redirect:/home");
-	}
 	
 	@RequestMapping(value = "/crear-categorias", method = RequestMethod.GET)
 	public ModelAndView vistaCrearCategoria() {
 		ModelMap modelo = new ModelMap();
 		Categoria categoria = new Categoria();
-		modelo.put("usuario", categoria);
+		modelo.put("categoria", categoria);
 		return new ModelAndView("CategoriaCrear", modelo);
 	}
+	
+	@RequestMapping(value = "/crear-categorias", method = RequestMethod.POST)
+	public ModelAndView crearCategoria(@ModelAttribute("categoria") Categoria categoria, HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		servicioCategoria.guardarCategoria(categoria);
+		return new ModelAndView("home",model);
+	}
+	
+	
 }
