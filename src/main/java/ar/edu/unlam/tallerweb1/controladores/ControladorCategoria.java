@@ -3,8 +3,12 @@ package ar.edu.unlam.tallerweb1.controladores;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +16,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
 import ar.edu.unlam.tallerweb1.modelo.Categoria;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCategoria;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
 @Controller
 public class ControladorCategoria {
 	
+	private ServicioCategoria servicioCategoria;
+	
+	@Autowired
+	public ControladorCategoria(ServicioCategoria servicioCategoria) {
+		this.servicioCategoria = servicioCategoria;
+	}
+
 //	@RequestMapping(value = "/home", method = RequestMethod.GET)
 //	public String mostrarCategoria(Model model) {
 //		List<Categoria> categorias = obtenerLista();
@@ -24,12 +38,8 @@ public class ControladorCategoria {
 //
 //		return "home";
 //	}
-	
 	@RequestMapping(value = "/categorias", method = RequestMethod.GET)
 	public ModelAndView mostrarCategoriaSeleccionada() {
-		
-		
-
 		return new ModelAndView("home");
 	}
 
@@ -67,4 +77,21 @@ public class ControladorCategoria {
 			return null;
 		}
 	}
+	
+	@RequestMapping(value = "/crear-categorias", method = RequestMethod.GET)
+	public ModelAndView vistaCrearCategoria() {
+		ModelMap modelo = new ModelMap();
+		Categoria categoria = new Categoria();
+		modelo.put("categoria", categoria);
+		return new ModelAndView("CategoriaCrear", modelo);
+	}
+	
+	@RequestMapping(value = "/crear-categorias", method = RequestMethod.POST)
+	public ModelAndView crearCategoria(@ModelAttribute("categoria") Categoria categoria, HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		servicioCategoria.guardarCategoria(categoria);
+		return new ModelAndView("home",model);
+	}
+	
+	
 }

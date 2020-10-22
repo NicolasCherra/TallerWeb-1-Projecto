@@ -31,4 +31,9 @@ public class ServicioCajaDeRegaloImpl implements ServicioCajaDeRegalo {
 		return this.servicioCajaDeRegaloDAO.buscarCajaPorNumero(numeroCaja);
 	}
 
+	@Override
+	public Boolean crearCajaDeRegalo(CajaDeRegalo cajaDeRegalo) {
+		return this.servicioCajaDeRegaloDAO.crearCajaDeRegalo(cajaDeRegalo);
+	}
+
 }
