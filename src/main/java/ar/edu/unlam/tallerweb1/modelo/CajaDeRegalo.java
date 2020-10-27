@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CajaDeRegalo")
 public class CajaDeRegalo {
 
 	@Id
@@ -18,7 +19,7 @@ public class CajaDeRegalo {
 	private Integer precio;
 	private Integer cantidadPersonas;
 	private String imagen;
-	// private Categoria categoria;
+	private List<Experiencia> experiencias;
 
 	/*
 	 * public CajaDeRegalo (String nombre, String descripcion, Double precio) {

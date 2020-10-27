@@ -14,17 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
-import ar.edu.unlam.tallerweb1.modelo.Categoria;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCajaDeRegalo;
+import ar.edu.unlam.tallerweb1.servicios.ServicioExperiencia;
 
 @Controller
 public class ControladorCajaDeRegalo {
 
 	private ServicioCajaDeRegalo servicioCaja;
+	private ServicioExperiencia servicioExperiencia;
 	
 	@Autowired
-	public ControladorCajaDeRegalo(ServicioCajaDeRegalo servicioCaja) {
+	public ControladorCajaDeRegalo(ServicioCajaDeRegalo servicioCaja, ServicioExperiencia servicioExp) {
 		this.servicioCaja = servicioCaja;
+		this.servicioExperiencia= servicioExp;
 	}
 	
 	
@@ -46,7 +48,9 @@ public class ControladorCajaDeRegalo {
 		caja = servicioCaja.buscarCajaPorNumero(numeroCaja);
 		model.put("caja", caja);
 		
-		return new ModelAndView("cajaSeleccionada",model);
+		
+		
+		return new ModelAndView("caja-seleccionada",model);
 	}
 	
 	@RequestMapping("/regalo-form")
@@ -67,7 +71,7 @@ public class ControladorCajaDeRegalo {
 		ModelMap modelo = new ModelMap();
 		CajaDeRegalo cajaDeRegalo = new CajaDeRegalo();
 		modelo.put("cajaDeRegalo", cajaDeRegalo);
-		return new ModelAndView("CrearCajaDeRegalo", modelo);
+		return new ModelAndView("crear-caja-regalo", modelo);
 	}
 	
 	@RequestMapping(value = "/crear-cajaDeRegalo", method = RequestMethod.POST)
