@@ -1,5 +1,5 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-public class ServicioExperienciaImpl {
+public class ServicioExperienciaImpl extends ServicioExperiencia {
 
 }
