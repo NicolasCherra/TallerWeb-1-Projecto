@@ -34,10 +34,15 @@
 					<div class="card-footer">
 					<form:form  method="POST" action="mostrarCaja" modelAttribute="CajaDeRegalo"> 
 						<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}"/>
-						<form:button class="btn btn-danger w-100" type="submit">Comprar</form:button>
+						<form:button class="btn btn-danger w-100" type="submit">Regalar</form:button>
 					</form:form >
 					</div>
 				</div>
+		</div>
+		<div>
+			<c:forEach items="${experiencias }" var="experiencia" >
+				<h3>${experiencia.nombre }</h3>
+			</c:forEach>
 		</div>
 	</div>
 

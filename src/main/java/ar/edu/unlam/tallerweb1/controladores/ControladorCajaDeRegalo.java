@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
-import ar.edu.unlam.tallerweb1.modelo.Categoria;
+import ar.edu.unlam.tallerweb1.modelo.Experiencia;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCajaDeRegalo;
 
 @Controller
@@ -44,7 +45,9 @@ public class ControladorCajaDeRegalo {
 		ModelMap model = new ModelMap();
 		Integer numeroCaja = caja.getNumeroDeCaja();
 		caja = servicioCaja.buscarCajaPorNumero(numeroCaja);
+		List<Experiencia> experiencias = servicioCaja.listarExperiencias(caja.getNumeroDeCaja());
 		model.put("caja", caja);
+		model.put("experiencias", experiencias);
 		
 		return new ModelAndView("cajaSeleccionada",model);
 	}
