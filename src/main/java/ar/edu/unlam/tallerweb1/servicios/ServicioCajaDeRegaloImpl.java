@@ -1,12 +1,14 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
+import ar.edu.unlam.tallerweb1.modelo.Experiencia;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioCajaDeRegalo;
 
 @Service
@@ -34,6 +36,11 @@ public class ServicioCajaDeRegaloImpl implements ServicioCajaDeRegalo {
 	@Override
 	public Boolean crearCajaDeRegalo(CajaDeRegalo cajaDeRegalo) {
 		return this.servicioCajaDeRegaloDAO.crearCajaDeRegalo(cajaDeRegalo);
+	}
+
+	@Override
+	public List<Experiencia> listarExperiencias(Integer numeroDeCaja) {
+		return servicioCajaDeRegaloDAO.listarExperiencias(numeroDeCaja);
 	}
 
 }

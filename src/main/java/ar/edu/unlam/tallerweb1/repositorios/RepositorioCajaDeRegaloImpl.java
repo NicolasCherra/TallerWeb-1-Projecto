@@ -1,14 +1,17 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
+import ar.edu.unlam.tallerweb1.modelo.Experiencia;
 
 @Repository("repositorioCajaDeRegalo")
 public class RepositorioCajaDeRegaloImpl implements RepositorioCajaDeRegalo {
@@ -45,6 +48,15 @@ public class RepositorioCajaDeRegaloImpl implements RepositorioCajaDeRegalo {
 			System.out.println(e);
 			return false;
 		}
+	}
+
+	@Override
+	public List<Experiencia> listarExperiencias(Integer numeroDeCaja) {
+		final Session session = sessionFactory.getCurrentSession();
+		return  session
+				.createCriteria(Experiencia.class)
+				.add(Restrictions.eq("cajaDeRegalo", buscarCajaPorNumero(numeroDeCaja)))
+				.list();
 	}
 
 }

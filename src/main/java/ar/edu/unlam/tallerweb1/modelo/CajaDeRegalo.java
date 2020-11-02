@@ -1,10 +1,13 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "CajaDeRegalo")
@@ -18,12 +21,8 @@ public class CajaDeRegalo {
 	private Integer precio;
 	private Integer cantidadPersonas;
 	private String imagen;
-	// private Categoria categoria;
-
-	/*
-	 * public CajaDeRegalo (String nombre, String descripcion, Double precio) {
-	 * this.nombre = nombre; this.descripcion = descripcion; this.precio = precio; }
-	 */
+	@Transient
+	private Set<Experiencia> experiencias;
 
 	public Integer getNumeroDeCaja() {
 		return numeroDeCaja;
