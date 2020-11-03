@@ -9,4 +9,5 @@ public interface RepositorioUsuario {
 	Boolean guardarUsuario(Usuario usuario);
 	Boolean buscarUsuarioPorNombreUsuario(Usuario usuario);
 	Usuario buscarUsuarioPorEmail(Usuario usuario);
+	Usuario getUsuarioPorUsername(String username);
 }
