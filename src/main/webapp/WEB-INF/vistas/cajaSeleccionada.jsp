@@ -6,6 +6,7 @@
 <title>One Gift | Home</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/Style.css" rel="stylesheet">
+<link href="css/stylecajaexp.css" rel="stylesheet">
 </head>
 <%@ include file="./layout/Header.jsp"%>
 <body>
@@ -39,13 +40,28 @@
 					</div>
 				</div>
 		</div>
-		<div>
-			<c:forEach items="${experiencias }" var="experiencia" >
-				<h3>${experiencia.nombre }</h3>
-			</c:forEach>
-		</div>
 	</div>
-
+	
+	<hr>
+		
+	<div class="container-fluid contenedor text-center">
+   		<h1 class="text-center" >Experiencias de la caja </h1><h1 style= "color:#ff00d0">${caja.nombre}</h1>
+   		<div class=" container-fluid d-flex row justify-content-center text-center">
+			
+			<c:forEach items="${experiencias }" var="experiencia">	
+      		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 m-2 container_foto ">
+       			
+       				<article class="text-left">
+            			<h2>${experiencia.nombre }</h2>
+            			<h4>${experiencia.descripcion }</h4>
+         			</article>
+         			<img src="${experiencia.imagen}" alt="">		      		
+     	 	</div>	
+       		</c:forEach>
+       		
+   		</div>
+	</div>
+	
 <%@ include file="./layout/Footer.jsp"%>
 
 	<script src="js/jquery-3.5.1.min.js"></script>
