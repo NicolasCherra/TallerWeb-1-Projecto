@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <nav class="navbar navbar-expand-lg navbar-dark btn-dark" id="MENU">
@@ -24,9 +25,18 @@
 				type="submit">Buscar</button>
 		</form>
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a
-				class="nav-link h5 ml-5 font-weight-bold" href="entrar">Iniciar
-					sesión</a></li>
+			<li class="nav-item d-flex justify-content-center">
+				<c:choose>
+					<c:when test = "${IDUSUARIO > 0}">
+		            	<a	class="nav-link h5 ml-5" href="profile?username=${USERNAME}">${USERNAME}</a>
+		            	<a	class="nav-link h5 font-weight-bold" href="logout">| Logout</a>
+		         	</c:when>
+		         
+			        <c:otherwise>
+						<a	class="nav-link h5 ml-5 font-weight-bold" href="entrar">Iniciar sesión</a>				
+		        	</c:otherwise>
+				</c:choose>
+			</li>
 		</ul>
 	</div>
 </nav>

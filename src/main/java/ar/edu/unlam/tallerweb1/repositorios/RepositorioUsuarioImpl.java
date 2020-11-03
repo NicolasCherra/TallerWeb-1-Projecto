@@ -61,4 +61,13 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.add(Restrictions.eq("email", usuario.getEmail()))			
 				.uniqueResult();
 	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public Usuario getUsuarioPorUsername(String username) {
+		final Session session = sessionFactory.getCurrentSession();
+		return (Usuario) session.createCriteria(Usuario.class)				
+								.add(Restrictions.eq("nombreUsuario", username))			
+								.uniqueResult();
+	}
 }

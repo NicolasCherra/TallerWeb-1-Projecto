@@ -1,16 +1,19 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 @Controller
 public class ControladorLogin {
@@ -25,10 +28,12 @@ public class ControladorLogin {
 	// paquete de los indicados en
 	// applicationContext.xml
 	private ServicioLogin servicioLogin;
+	private ServicioUsuario servicioUsuario;
 
 	@Autowired
-	public ControladorLogin(ServicioLogin servicioLogin) {
+	public ControladorLogin(ServicioLogin servicioLogin, ServicioUsuario servicioUsuario) {
 		this.servicioLogin = servicioLogin;
+		this.servicioUsuario = servicioUsuario;
 	}
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es
@@ -60,7 +65,8 @@ public class ControladorLogin {
 		// hace una llamada a otro action a través de la URL correspondiente a ésta
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
-			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			request.getSession().setAttribute("USERNAME", usuarioBuscado.getNombreUsuario());
+			request.getSession().setAttribute("IDUSUARIO", usuarioBuscado.getId());
 			return new ModelAndView("redirect:/home");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
@@ -120,5 +126,11 @@ public class ControladorLogin {
 			return new ModelAndView("registrarse", model);
 		}
 		return null;
+	}
+
+	@RequestMapping("logout")
+	public ModelAndView cerrarSesion(HttpServletRequest request) {
+		request.getSession().invalidate();
+		return new ModelAndView("redirect:/home");
 	}
 }

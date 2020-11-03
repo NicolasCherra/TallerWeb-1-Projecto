@@ -33,7 +33,7 @@
 					<div class="card-footer">
 					<form:form  method="POST" action="mostrarCaja" modelAttribute="CajaDeRegalo"> 
 						<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}"/>
-						<form:button class="btn btn-primary w-100" type="submit">Ver regalos dentro</form:button>
+						<form:button class="btn btn-primary w-100" type="submit">Ver regalos</form:button>
 					</form:form >
 					</div>
 				</div>
