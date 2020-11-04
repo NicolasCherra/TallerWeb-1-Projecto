@@ -33,9 +33,10 @@
 						<p class="card-text">Cantidad de personas: ${caja.cantidadPersonas}</p>
 					</div>
 					<div class="card-footer">
-					<form:form  method="POST" action="mostrarCaja" modelAttribute="CajaDeRegalo"> 
+					<form:form  method="POST" action="mostrarCaja" modelAttribute="CajaDeRegalo" class="form-inline"> 
 						<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}"/>
-						<form:button class="btn btn-danger w-100" type="submit">Regalar</form:button>
+						<form:button class="btn btn-danger w-50" type="submit">Regalar</form:button>
+						<a class="btn btn-info w-50" onclick="mostrar()">ver dentro</a>
 					</form:form >
 					</div>
 				</div>
@@ -44,7 +45,7 @@
 	
 	<hr>
 		
-	<div class="container-fluid contenedor text-center">
+	<div class="container-fluid contenedor text-center" id = "experiencias">
    		<h1 class="text-center" >Experiencias de la caja </h1><h1 style= "color:#ff00d0">${caja.nombre}</h1>
    		<div class=" container-fluid d-flex row justify-content-center text-center">
 			
@@ -63,8 +64,8 @@
 	</div>
 	
 <%@ include file="./layout/Footer.jsp"%>
-
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/experiencias.js"></script>
 </body>
 </html>

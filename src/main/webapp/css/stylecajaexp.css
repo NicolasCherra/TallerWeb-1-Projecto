@@ -1,6 +1,5 @@
 /*diseño experiencias*/
 
-
 .contenedor {
 	height: 100%;
 	padding: 2% 0;
@@ -80,4 +79,9 @@
 	-o-transform: translate(0px, 0px);
 	-ms-transform: translate(0px, 0px);
 	opacity: 1;
+}
+
+
+#experiencias{
+	display:none;
 }
