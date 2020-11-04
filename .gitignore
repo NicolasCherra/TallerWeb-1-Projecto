@@ -19,6 +19,9 @@ activemq-data/
 pom.properties
 hibernateContext.xml
 
+#Docker
+start-db.sh
+
 classes/
 /build
 buildSrc/build
