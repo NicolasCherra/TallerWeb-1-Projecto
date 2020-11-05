@@ -70,4 +70,28 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 								.add(Restrictions.eq("nombreUsuario", username))			
 								.uniqueResult();
 	}
+
+	@Override
+	public Boolean checkUserByEmail(String email) {
+		final Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Usuario.class)
+						.add(Restrictions.eq("email",email))
+						.uniqueResult() != null ;
+	}
+
+	@Override
+	public Usuario getUserByEmail(String email) {
+		final Session session = sessionFactory.getCurrentSession();
+		return (Usuario) session.createCriteria(Usuario.class)
+						.add(Restrictions.eq("email",email))
+						.uniqueResult();
+	}
+
+	@Override
+	public Usuario getUserById(long idRegalador) {
+		final Session session = sessionFactory.getCurrentSession();
+		return (Usuario) session.createCriteria(Usuario.class)
+						.add(Restrictions.eq("id",idRegalador))
+						.uniqueResult();
+	}
 }
