@@ -31,7 +31,7 @@ public class ControladorRegalo {
 		ModelMap model = new ModelMap();
 		Boolean usuarioExiste = servicioUsuario.checkUserByEmail(regaloForm.getEmail());
 		if(!usuarioExiste) {
-			model.put("error", "Usuario no existe");
+			model.put("mensaje", "Usuario no existe");
 			return new ModelAndView("redirect:/home", model);
 		}
 		
@@ -45,7 +45,7 @@ public class ControladorRegalo {
 		regalo.setRegalador(servicioUsuario.getUsuarioById(regaloForm.getIdRegalador()));
 		
 		servicioRegalo.guardarRegalo(regalo);
-		
-		return new ModelAndView("cajaSeleccionada",model);
+		model.put("mensaje", "Regalo enviado!");
+		return new ModelAndView("home", model);
 	}
 }

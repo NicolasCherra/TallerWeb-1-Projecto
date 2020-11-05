@@ -19,6 +19,14 @@
 			</div>
 		</div>
 
+
+			<c:if test="${not empty mensaje}">
+				<h4>
+					<span class="text-center">${mensaje}</span>
+				</h4>
+				<br>
+			</c:if>
+
 		<div class="card-deck">
 			<c:forEach items="${cajas}" var="caja">
 				<div class="card">

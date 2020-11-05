@@ -20,12 +20,6 @@
 			</div>
 		</div>
 
-			<c:if test="${not empty error}">
-				<h4>
-					<span>${error}</span>
-				</h4>
-				<br>
-			</c:if>
 
 		<div class="card-deck">
 				<div class="card">
