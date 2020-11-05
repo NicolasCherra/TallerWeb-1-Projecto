@@ -20,6 +20,13 @@
 			</div>
 		</div>
 
+			<c:if test="${not empty error}">
+				<h4>
+					<span>${error}</span>
+				</h4>
+				<br>
+			</c:if>
+
 		<div class="card-deck">
 				<div class="card">
 					<div class="card-img">
@@ -32,16 +39,41 @@
 						<p class="card-text">Precio: $${caja.precio}</p>
 						<p class="card-text">Cantidad de personas: ${caja.cantidadPersonas}</p>
 					</div>
-					<div class="card-footer">
-					<form:form  method="POST" action="mostrarCaja" modelAttribute="CajaDeRegalo" class="form-inline"> 
-						<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}"/>
-						<form:button class="btn btn-danger w-50" type="submit">Regalar</form:button>
+					<div class="card-footer d-inline">
+						<a class="btn btn-danger w-50" data-toggle="modal" data-target="#myModal">Regalar</a>
 						<a class="btn btn-info w-50" onclick="mostrar()">ver dentro</a>
-					</form:form >
 					</div>
 				</div>
 		</div>
 	</div>
+	
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <br>
+        </div>
+          <h4 class="modal-title">Hacer regalo</h4>
+        <div class="modal-body">
+          <p></p>
+          <form:form  method="POST" action="hacerRegalo" modelAttribute="RegaloForm" class="form-inline"> 
+          	<form:input path="email" placeholder="email del destinatario"/>
+          	<form:hidden path="idRegalador" value="${IDUSUARIO}"/>
+          	<form:hidden path="numeroCajaDeRegalo" value="${caja.numeroDeCaja}"/>
+          	<form:button type="submit" class="btn btn-default">Enviar</form:button>
+		  </form:form >
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+	
 	
 	<hr>
 		
