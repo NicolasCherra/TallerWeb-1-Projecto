@@ -6,7 +6,7 @@
 
 
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top darkNav"
-		id="mainNav" style="background-color: #212529;">
+		id="mainNav">
 		<div class="container">
 			<a class="navbar-brand js-scroll-trigger" href="#page-top"><img
 				src="assets/img/navbar-logo.svg" alt="" /></a>
@@ -22,7 +22,7 @@
 						href="home">Inicio</a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="/Regalo/perfil">Perfil</a></li>
-					<ul class="navbar-nav ml-auto mt-1">
+					<ul class="navbar-nav ml-auto">
 						<li class="nav-item d-flex justify-content-center"><c:choose>
 								<c:when test="${IDUSUARIO > 0}">
 									<a class="nav-link h5 ml-5" href="profile?username=${USERNAME}">${USERNAME}</a>

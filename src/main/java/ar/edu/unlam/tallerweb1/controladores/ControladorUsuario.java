@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import antlr.StringUtils;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
@@ -22,14 +23,18 @@ public class ControladorUsuario {
 		this.servicioUsuario = servicioUsuario;
 	}
 
-	@RequestMapping("profile")
-	public ModelAndView perfilUsuario(@RequestParam("username") String username, HttpServletRequest request) {
-		if(request.getSession().getAttribute("IDUSUARIO") == null)
-			return new ModelAndView("redirect:/home");
-		ModelMap model = new ModelMap();
-		Usuario usuarioExistente = servicioUsuario.getUsuarioPorNombreUsuario(username);
-		model.put("usuario", usuarioExistente);
-		return new ModelAndView("user-profile", model);
+	
+	@RequestMapping("perfil")
+	public ModelAndView irAlPerfil(HttpServletRequest request) {
+		if( request.getSession().getAttribute("IDUSUARIO") == null)
+			return new ModelAndView("redirect:/registrarse");
 		
+		ModelMap model = new ModelMap();
+		Usuario usuarioExistente = servicioUsuario.getUsuarioPorNombreUsuario(request.getSession().getAttribute("IDUSUARIO").toString());
+		model.put("usuario", usuarioExistente);
+		
+		return new ModelAndView("perfil", model);
 	}
+
+
 }

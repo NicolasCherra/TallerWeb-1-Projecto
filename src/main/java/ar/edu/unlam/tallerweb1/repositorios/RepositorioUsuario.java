@@ -10,4 +10,7 @@ public interface RepositorioUsuario {
 	Boolean buscarUsuarioPorNombreUsuario(Usuario usuario);
 	Usuario buscarUsuarioPorEmail(Usuario usuario);
 	Usuario getUsuarioPorUsername(String username);
+	Boolean checkUserByEmail(String email);
+	Usuario getUserByEmail(String email);
+	Usuario getUserById(long idRegalador);
 }

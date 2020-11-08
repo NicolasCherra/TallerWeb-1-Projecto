@@ -24,7 +24,7 @@ public class Regalo {
 	@JoinColumn(nullable = false)
 	private CajaDeRegalo cajaDeRegalo;
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(nullable = true)
 	private Experiencia experiencia;
 	private Boolean estado;
 		
@@ -66,6 +66,4 @@ public class Regalo {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-	
-
 }
