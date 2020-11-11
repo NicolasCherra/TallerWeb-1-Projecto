@@ -23,18 +23,18 @@
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="/Regalo/perfil">Perfil</a></li>
 					<ul class="navbar-nav ml-auto mt-1">
-						<li class="nav-item d-flex justify-content-center"><c:choose>
-								<c:when test="${IDUSUARIO > 0}">
-									<a class="nav-link h5 ml-5" href="profile?username=${USERNAME}">${USERNAME}</a>
+						<li class="nav-item d-flex justify-content-center">
+								<c:if test="${not empty IDUSUARIO}">
+									<<a class="nav-link h5 ml-5"
+										href="profile?username=${USERNAME}">${USERNAME}</a>
 									<a class="nav-link h5 font-weight-bold" href="logout">|
 										Logout</a>
-								</c:when>
-
-								<c:otherwise>
+								</c:if>
+								<c:if test="${empty IDUSUARIO}">
 									<a class="nav-link h5 ml-5 font-weight-bold" href="entrar">Iniciar
 										sesión</a>
-								</c:otherwise>
-							</c:choose></li>
+								</c:if>
+						</li>
 					</ul>
 				</ul>
 			</div>
