@@ -21,9 +21,6 @@ public class CajaDeRegalo {
 	private Integer precio;
 	private Integer cantidadPersonas;
 	private String imagen;
-	//TODO ¿Para que usamos este atributo?
-	@Transient
-	private Set<Experiencia> experiencias;
 
 	public Integer getNumeroDeCaja() {
 		return numeroDeCaja;
