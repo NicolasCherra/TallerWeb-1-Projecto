@@ -21,8 +21,6 @@ public class CajaDeRegalo {
 	private Integer precio;
 	private Integer cantidadPersonas;
 	private String imagen;
-	@Transient
-	private Set<Experiencia> experiencias;
 
 	public Integer getNumeroDeCaja() {
 		return numeroDeCaja;
