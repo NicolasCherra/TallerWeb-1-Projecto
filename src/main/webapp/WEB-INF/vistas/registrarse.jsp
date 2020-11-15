@@ -1,44 +1,83 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-	<head>
-	<!-- Bootstrap core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet" >
-	    <!-- Bootstrap theme -->
-	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-	</head> 
-	<body>
-		<div class = "container mr-5">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
-				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
-					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
-				<form:form action="validar-registro" method="POST" modelAttribute="usuario">
-			    	<h3 class="form-signin-heading">Registrarse</h3>
-					<hr class="colorgraph"><br>
+<head>
+<link href="css/registrarse.css" rel="stylesheet">
+<title>Registrarse | One Gift</title>
+</head>
+<body>
+	<%@ include file="./layout/Header.jsp"%>
 
-					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>					
-					<form:input path="nombre"  type="text" placeholder="Nombre" class="form-control" />
-					<form:input path="apellido"  type="text" placeholder="Apellido" class="form-control" />
-					<form:input path="nombreUsuario"  type="text" placeholder="Nombre de Usuario" class="form-control" />
-					<form:input path="email" id="email" type="email" placeholder="email@example.com" class="form-control" />
-					<form:input path="password" type="password" id="password" placeholder="Constraseña" class="form-control"/>     		  
-					
-					<button class="btn btn-lg btn-primary btn-block mb-2" Type="Submit"/>Registrarse</button>
-				</form:form>
-			
-				<%--Bloque que es visible si el elemento error no estÃ¡ vacÃ­o	--%>
-				<c:if test="${not empty error}">
-			        <h4><span>${error}</span></h4>
-			        <br>
-		        </c:if>	
+	<div class="main">
+
+		<section class="sign">
+			<div class="container">
+				<div class="signup-content">
+
+					<form:form method="POST" action="validar-registro"
+						modelAttribute="usuario" id="signup-form" class="signup-form">
+
+						<h2 class="masthead-heading text-uppercase">Registrarse</h2>
+						<h6 class="masthead-subheading text-center">Empezá a enviar y
+							recibir regalos</h6>
+
+						<%--Bloque que es visible si el elemento error no estÃ¡ vacÃ­o	--%>
+						<c:if test="${not empty error}">
+							<h6>
+								<span class="text-warning">${error}</span>
+							</h6>
+							<br>
+						</c:if>
+
+						<div class="form-group">
+							<form:input path="nombre" type="text" class="form-input"
+								name="name" id="name" placeholder="Nombre" required="" />
+						</div>
+						<div class="form-group">
+							<form:input path="apellido" type="text" class="form-input"
+								name="apellido" id="apellido" placeholder="Apellido" required="" />
+						</div>
+						<div class="form-group">
+							<form:input path="nombreUsuario" type="text" class="form-input"
+								name="username    " id="username"
+								placeholder="Nombre de usuario" required="" />
+						</div>
+						<div class="form-group">
+							<form:input path="email" class="form-input" name="email"
+								id="email" placeholder="Email" required="" />
+						</div>
+						<div class="form-group">
+							<form:input path="password" type="password" class="form-input"
+								name="password" id="password" placeholder="Contraseña"
+								required="" />
+							<span toggle="#password"
+								class="zmdi zmdi-eye field-icon toggle-password"><i
+								class="far fa-eye toggle-icon"></i></span>
+						</div>
+						<div class="form-group d-flex justify-content-center">
+							<button class="form-submit btn btn-primary w-50 " type="submit"
+								name="submit" id="submit" />
+							Registrarse
+							</button>
+						</div>
+					</form:form>
+					<p class="loginhere">
+						¿Ya tienes una cuenta? <a href="entrar" class="loginhere-link">Iniciar
+							sesión</a>
+					</p>
+				</div>
 			</div>
-		</div>
-		
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	</body>
+		</section>
+
+	</div>
+
+	<%@ include file="./layout/Footer.jsp"%>
+
+	<!-- JS -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/iniciarSesion.js" type="text/javascript"></script>
+</body>
 </html>

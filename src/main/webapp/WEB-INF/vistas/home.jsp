@@ -78,8 +78,7 @@
 					</span>
 					<h4 class="my-3">Enviar</h4>
 					<p class="text-muted">Completá el correo electrónico del
-						"""beneficiario""" (no me acuerdo el nombre) para enviárselo y la
-						canjea</p>
+						beneficiario para enviárselo</p>
 				</div>
 				<div class="col-md-4">
 					<span class="fa-stack fa-4x"> <i
@@ -87,8 +86,8 @@
 						class="fas fa-gift fa-stack-1x fa-inverse"></i>
 					</span>
 					<h4 class="my-3">Disfrutar</h4>
-					<p class="text-muted">El """beneficiario""" elige una
-						experiencia de la caja</p>
+					<p class="text-muted">El beneficiaro elige una
+						experiencia de la caja para canjear</p>
 				</div>
 			</div>
 		</div>

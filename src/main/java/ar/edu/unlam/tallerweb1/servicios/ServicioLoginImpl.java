@@ -20,12 +20,12 @@ public class ServicioLoginImpl implements ServicioLogin {
 	private RepositorioUsuario servicioLoginDao;
 
 	@Autowired
-	public ServicioLoginImpl(RepositorioUsuario servicioLoginDao){
+	public ServicioLoginImpl(RepositorioUsuario servicioLoginDao) {
 		this.servicioLoginDao = servicioLoginDao;
 	}
 
 	@Override
-	public Usuario consultarUsuario (Usuario usuario) {
+	public Usuario consultarUsuario(Usuario usuario) {
 		return servicioLoginDao.consultarUsuario(usuario);
 	}
 
@@ -33,6 +33,7 @@ public class ServicioLoginImpl implements ServicioLogin {
 	public Boolean guardarUsuario(Usuario usuario) {
 		return servicioLoginDao.guardarUsuario(usuario);
 	}
+
 	@Override
 	public Boolean buscarUsuarioPorNombreUsuario(Usuario usuario) {
 		return servicioLoginDao.buscarUsuarioPorNombreUsuario(usuario);
@@ -41,5 +42,14 @@ public class ServicioLoginImpl implements ServicioLogin {
 	@Override
 	public Usuario buscarUsuarioPorEmail(Usuario usuario) {
 		return servicioLoginDao.buscarUsuarioPorEmail(usuario);
+	}
+
+	@Override
+	public boolean verificarSiValoresNulos(Usuario usuario) {
+		if (usuario.getEmail() == "" || usuario.getNombre() == "" || usuario.getNombreUsuario() == ""
+				|| usuario.getPassword() == "")
+			return true;
+
+		return false;
 	}
 }

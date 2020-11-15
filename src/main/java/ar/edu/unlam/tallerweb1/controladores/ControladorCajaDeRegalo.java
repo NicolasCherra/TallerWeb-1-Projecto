@@ -50,7 +50,7 @@ public class ControladorCajaDeRegalo {
 		model.put("experiencias", experiencias);
 		model.put("RegaloForm", new RegaloForm());
 		
-		return new ModelAndView("cajaSeleccionada",model);
+		return new ModelAndView("caja-seleccionada",model);
 	}
 	
 	

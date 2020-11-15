@@ -18,24 +18,30 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 public class ControladorRegalo {
 
 	private ServicioRegalo servicioRegalo;
-	
+
 	@Autowired
 	public ControladorRegalo(ServicioRegalo servicioRegalo) {
 		this.servicioRegalo = servicioRegalo;
 	}
 
-	@RequestMapping(value="hacerRegalo", method= RequestMethod.POST)
+	@RequestMapping(value = "hacerRegalo", method = RequestMethod.POST)
 	public ModelAndView regalar(@ModelAttribute("RegaloForm") RegaloForm regaloForm) {
 		ModelMap model = new ModelMap();
-		
-		Boolean regalado = servicioRegalo.guardarRegalo(regaloForm.getNumeroCajaDeRegalo(), regaloForm.getIdRegalador(), regaloForm.getEmail());
-		if(!regalado) {
-			model.put("mensaje", "Usuario no existe");
-			return new ModelAndView("redirect:/home", model);
+
+		Boolean regalado = servicioRegalo.guardarRegalo(regaloForm.getNumeroCajaDeRegalo(), regaloForm.getIdRegalador(),
+				regaloForm.getEmail());
+		if (!regalado) {
+			model.put("error", "No se ha podido enviar el regalo, inténtalo nuevamente");
+			return new ModelAndView("pagina-resultado", model);
+
+		} else if (regalado) {
+			model.put("ok", "Regalo enviado!");
+			return new ModelAndView("pagina-resultado", model);
+
+		} else {
+			model.put("error", "Para realizar un regalo primero debes iniciar sesión");
+			model.put("boton", "registrarse");
+			return new ModelAndView("pagina-resultado", model);
 		}
-		
-		
-		model.put("mensaje", "Regalo enviado!");
-		return new ModelAndView("home", model);
 	}
 }
