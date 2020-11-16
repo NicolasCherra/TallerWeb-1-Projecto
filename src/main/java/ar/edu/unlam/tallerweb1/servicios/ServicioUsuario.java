@@ -6,4 +6,9 @@ public interface ServicioUsuario {
 
 	Usuario getUsuarioPorNombreUsuario(String username);
 
+	Boolean checkUserByEmail(String email);
+
+	Usuario getUsuarioByEmail(String email);
+
+	Usuario getUsuarioById(long idRegalador);
 }

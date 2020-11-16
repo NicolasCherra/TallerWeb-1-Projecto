@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
 import ar.edu.unlam.tallerweb1.modelo.Experiencia;
+import ar.edu.unlam.tallerweb1.modelo.RegaloForm;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCajaDeRegalo;
 
 @Controller
@@ -47,8 +48,9 @@ public class ControladorCajaDeRegalo {
 		List<Experiencia> experiencias = servicioCaja.listarExperiencias(caja.getNumeroDeCaja());
 		model.put("caja", caja);
 		model.put("experiencias", experiencias);
+		model.put("RegaloForm", new RegaloForm());
 		
-		return new ModelAndView("cajaSeleccionada",model);
+		return new ModelAndView("caja-seleccionada",model);
 	}
 	
 	

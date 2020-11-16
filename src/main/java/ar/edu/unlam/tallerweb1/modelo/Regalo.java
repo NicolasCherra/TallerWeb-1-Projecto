@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,9 +25,10 @@ public class Regalo {
 	@JoinColumn(nullable = false)
 	private CajaDeRegalo cajaDeRegalo;
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(nullable = true)
 	private Experiencia experiencia;
-	private Boolean estado;
+	@Column(columnDefinition = "boolean default false")
+	private Boolean canjeado = false;
 		
 	
 	
@@ -60,12 +62,10 @@ public class Regalo {
 	public void setExperiencia(Experiencia experiencia) {
 		this.experiencia = experiencia;
 	}
-	public Boolean getEstado() {
-		return estado;
+	public Boolean getCanjeado() {
+		return canjeado;
 	}
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setCanjeado(Boolean canjeado) {
+		this.canjeado = canjeado;
 	}
-	
-
 }

@@ -24,4 +24,20 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 		return servicioUsuarioDAO.getUsuarioPorUsername(username);
 	}
 
+	@Override
+	public Boolean checkUserByEmail(String email) {
+		return servicioUsuarioDAO.checkUserByEmail(email);
+	}
+
+	@Override
+	public Usuario getUsuarioByEmail(String email) {
+		return servicioUsuarioDAO.getUserByEmail(email);
+	}
+
+	@Override
+	public Usuario getUsuarioById(long idRegalador) {
+		// TODO Auto-generated method stub
+		return servicioUsuarioDAO.getUserById(idRegalador);
+	}
+
 }
