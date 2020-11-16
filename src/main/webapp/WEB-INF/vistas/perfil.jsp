@@ -95,13 +95,16 @@
 										<i class="material-icons text-info mr-2">2</i>Regalos
 										recibidos
 									</h6>
-									<c:forEach items="${cajas}" var="caja">
+									<c:forEach items="${lista}" var="caja">
 									<form:form method="POST" action="canjearRegalo"
-										modelAttribute="CajaDeRegalo">
-										<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}" />
+										modelAttribute="Regalo">
+										<form:hidden path="numeroDeCaja" value="${caja.id}" />
+										<form:label path="" value="hola"/>
 										<form:button class="btn-success" type="submit">Canjear!</form:button>
 									</form:form>									
 									</c:forEach>
+									
+									<hr>
 									<ul>
 										<li class="m-1">Fotografía</li>
 										<button type="button" class="btn-success">Canjear!</button>

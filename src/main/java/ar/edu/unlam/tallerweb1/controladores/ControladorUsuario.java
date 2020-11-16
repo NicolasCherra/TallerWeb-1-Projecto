@@ -26,8 +26,9 @@ public class ControladorUsuario {
 	private ServicioRegalo servicioRegalo;
 
 	@Autowired
-	public ControladorUsuario(ServicioUsuario servicioUsuario) {
+	public ControladorUsuario(ServicioUsuario servicioUsuario, ServicioRegalo servicioRegalo) {
 		this.servicioUsuario = servicioUsuario;
+		this.servicioRegalo = servicioRegalo;
 	}
 
 	@RequestMapping("perfil")
@@ -40,27 +41,15 @@ public class ControladorUsuario {
 				.getUsuarioPorNombreUsuario(request.getSession().getAttribute("IDUSUARIO").toString());
 		model.put("usuario", usuarioExistente);
 
+		List<Regalo> listarRegalosHechos = servicioRegalo.listarRegalosHechosPor(usuarioExistente);
+		model.put("lista",listarRegalosHechos);
+		model.put("CajaDeRegalo", new CajaDeRegalo());
+
 		Long valor = Long.parseLong(request.getSession().getAttribute("IDUSUARIO").toString());
 		model.put("usuario", servicioUsuario.getUsuarioById(valor));
 
 		return new ModelAndView("perfil", model);
 	}
 
-	@RequestMapping("perfile")
-	public ModelAndView mostrar(HttpServletRequest request) {
-		if (request.getSession().getAttribute("IDUSUARIO") == null)
-			return new ModelAndView("redirect:/registrarse");
-
-		ModelMap model = new ModelMap();
-		Usuario usuarioExistente = servicioUsuario
-				.getUsuarioPorNombreUsuario(request.getSession().getAttribute("IDUSUARIO").toString());
-
-		model.put("usuario", usuarioExistente);
-
-		// List<Regalo> listarRegalosHechos =
-		// servicioRegalo.listarRegalosHechosPor(usuarioExistente);
-
-		return new ModelAndView("perfil", model);
-	}
-
+	
 }
