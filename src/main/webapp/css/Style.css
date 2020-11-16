@@ -1,7 +1,6 @@
 /*CAJAS*/
-
-.container_foto{
-	padding:0px;	
+.container_foto {
+	padding: 0px;
 }
 
 .card-img {
@@ -12,6 +11,15 @@
 	height: 100%;
 	object-fit: cover;
 	object-position: center center;
+}
+
+.col-7 {
+	max-height: 45rem;
+}
+
+.col-7 img {
+	max-height: 27rem;
+    object-fit: cover;
 }
 
 .card {

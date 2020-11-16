@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
+import ar.edu.unlam.tallerweb1.modelo.Experiencia;
 import ar.edu.unlam.tallerweb1.modelo.Regalo;
 import ar.edu.unlam.tallerweb1.modelo.RegaloForm;
+import ar.edu.unlam.tallerweb1.servicios.ServicioCajaDeRegalo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegalo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
@@ -18,6 +22,7 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 public class ControladorRegalo {
 
 	private ServicioRegalo servicioRegalo;
+	private ServicioCajaDeRegalo servicioCajaRegalo;
 
 	@Autowired
 	public ControladorRegalo(ServicioRegalo servicioRegalo) {
@@ -44,4 +49,5 @@ public class ControladorRegalo {
 			return new ModelAndView("pagina-resultado", model);
 		}
 	}
+	
 }
