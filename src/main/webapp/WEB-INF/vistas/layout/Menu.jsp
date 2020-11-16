@@ -8,8 +8,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top darkNav"
 		id="mainNav" style="background-color: #212529;">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top"><img
-				src="assets/img/navbar-logo.svg" alt="" /></a>
+			<a class="navbar-brand js-scroll-trigger" href="/Regalo/home">One Gift</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-toggle="collapse" data-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -26,7 +25,7 @@
 						<li class="nav-item d-flex justify-content-center">
 								<c:if test="${not empty IDUSUARIO}">
 									<<a class="nav-link h5 ml-5"
-										href="profile?username=${USERNAME}">${USERNAME}</a>
+										href="perfil">${USERNAME}</a>
 									<a class="nav-link h5 font-weight-bold" href="logout">|
 										Logout</a>
 								</c:if>

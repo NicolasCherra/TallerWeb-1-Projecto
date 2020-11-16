@@ -8,4 +8,5 @@ public interface ServicioLogin {
 	Boolean guardarUsuario(Usuario usuario);
 	Boolean buscarUsuarioPorNombreUsuario(Usuario usuario);
 	Usuario buscarUsuarioPorEmail(Usuario usuario);
+	boolean verificarSiValoresNulos(Usuario usuario);
 }

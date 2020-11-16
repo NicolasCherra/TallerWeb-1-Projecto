@@ -11,5 +11,4 @@ public interface ServicioUsuario {
 	Usuario getUsuarioByEmail(String email);
 
 	Usuario getUsuarioById(long idRegalador);
-
 }

@@ -50,10 +50,8 @@ public class ControladorCajaDeRegalo {
 		model.put("experiencias", experiencias);
 		model.put("RegaloForm", new RegaloForm());
 		
-		return new ModelAndView("cajaSeleccionada",model);
+		return new ModelAndView("caja-seleccionada",model);
 	}
-	
-	
 	
 	@RequestMapping("/regalo-form")
 	public String regaloForm(Model model) {
@@ -73,7 +71,7 @@ public class ControladorCajaDeRegalo {
 		ModelMap modelo = new ModelMap();
 		CajaDeRegalo cajaDeRegalo = new CajaDeRegalo();
 		modelo.put("cajaDeRegalo", cajaDeRegalo);
-		return new ModelAndView("CrearCajaDeRegalo", modelo);
+		return new ModelAndView("crear-caja-regalo", modelo);
 	}
 	
 	@RequestMapping(value = "/crear-cajaDeRegalo", method = RequestMethod.POST)
@@ -83,3 +81,4 @@ public class ControladorCajaDeRegalo {
 		return new ModelAndView("home",model);
 	}
 }
+

@@ -1,7 +1,6 @@
 /*CAJAS*/
-
-.container_foto{
-	padding:0px;	
+.container_foto {
+	padding: 0px;
 }
 
 .card-img {
@@ -12,6 +11,15 @@
 	height: 100%;
 	object-fit: cover;
 	object-position: center center;
+}
+
+.col-7 {
+	max-height: 45rem;
+}
+
+.col-7 img {
+	max-height: 27rem;
+    object-fit: cover;
 }
 
 .card {
@@ -152,14 +160,12 @@ header.masthead {
 	padding-bottom: 6rem;
 	text-align: center;
 	color: #fff;
-	background-image: url("https://i.postimg.cc/7PjM4W5Q/regalo3.jpg");
-	background-image: url("https://i.postimg.cc/Nf1Nzcdx/regalo.jpg");
 	background-image: url("https://i.postimg.cc/P5hnJKLd/regalo4.jpg");
 	background-repeat: no-repeat;
 	background-attachment: scroll;
 	background-position: bottom;
 	background-size: cover;
-	height: 80vh;
+	height: 85vh;
 	position: relative;
 }
 
@@ -173,7 +179,7 @@ header.masthead:before {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
-header.masthead .masthead-subheading {
+.masthead-subheading {
 	font-size: 1.5rem;
 	font-style: italic;
 	line-height: 1.5rem;
@@ -185,8 +191,8 @@ header.masthead .masthead-subheading {
 	position: relative;
 }
 
-header.masthead .masthead-heading {
-	font-size: 3.25rem;
+.masthead-heading {
+	font-size: 2.4rem;
 	font-weight: 700;
 	line-height: 3.25rem;
 	margin-bottom: 2rem;

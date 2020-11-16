@@ -3,42 +3,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<script src="js/jquery-3.5.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<link href="css/registrarse.css" rel="stylesheet">
+<title>Iniciar sesión | One Gift</title>
 </head>
 <body>
-	<div class="container">
-		<div id="loginbox" style="margin-top: 50px;"
-			class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-			<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
-			<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
-			<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
-			<form:form action="validar-login" method="POST"
-				modelAttribute="usuario">
-				<h3 class="form-signin-heading">Login</h3>
-				<hr class="colorgraph">
-				<br>
+	<%@ include file="./layout/Header.jsp"%>
 
-				<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-				<form:input path="email" id="email" type="email"
-					placeholder="email@example.com" class="form-control" />
-				<form:input path="password" type="password" id="password"
-					placeholder="Contraseña" class="form-control" />
+	<div class="main">
 
-				<button class="btn btn-lg btn-primary btn-block mb-2" Type="Submit" />Entrar</button>
-					No estas registrado ?
-					<a href="registrarse">Darse de alta</a>
-			</form:form>
+		<section class="sign">
+			<div class="container">
+				<div class="signup-content">
 
-			<%--Bloque que es visible si el elemento error no estÃ¡ vacÃ­o	--%>
-			<c:if test="${not empty error}">
-				<h4>
-					<span>${error}</span>
-				</h4>
-				<br>
-			</c:if>
-		</div>
+					<form:form method="POST" action="validar-login"
+						modelAttribute="usuario" id="signup-form" class="signup-form">
+
+						<h2 class="masthead-heading text-uppercase">Hola!</h2>
+						<h6 class="masthead-subheading text-center">Continúa haciendo y recibiendo regalos</h6>
+
+				
+						<c:if test="${not empty error}">
+							<h6>
+								<span class="text-warning">${error}</span>
+							</h6>
+							<br>
+						</c:if>
+
+						<div class="form-group">
+							<form:input path="email" class="form-input" name="email"
+								id="email" placeholder="Email" required="" />
+						</div>
+						<div class="form-group">
+							<form:input path="password" type="password" class="form-input"
+								name="password" id="password" placeholder="Contraseña"
+								required="" />
+							<span toggle="#password"
+								class="zmdi zmdi-eye field-icon toggle-password"><i
+								class="far fa-eye toggle-icon"></i></span>
+						</div>
+						<div class="form-group d-flex justify-content-center">
+							<button class="form-submit btn btn-primary w-50" type="submit"
+								name="submit" id="submit" />
+							Iniciar sesión
+							</button>
+						</div>
+					</form:form>
+					<p class="loginhere">
+						¿No te registraste? <a href="registrarse" class="loginhere-link">Darse de alta</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
 	</div>
+
+	<%@ include file="./layout/Footer.jsp"%>
+
+	<!-- JS -->
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/iniciarSesion.js" type="text/javascript"></script>
 </body>
 </html>
