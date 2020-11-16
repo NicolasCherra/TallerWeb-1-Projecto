@@ -95,9 +95,18 @@
 										<i class="material-icons text-info mr-2">2</i>Regalos
 										recibidos
 									</h6>
+									<c:forEach items="${cajas}" var="caja">
+									<form:form method="POST" action="canjearRegalo"
+										modelAttribute="CajaDeRegalo">
+										<form:hidden path="numeroDeCaja" value="${caja.numeroDeCaja}" />
+										<form:button class="btn-success" type="submit">Canjear!</form:button>
+									</form:form>									
+									</c:forEach>
 									<ul>
-										<li>Fotografía</li>
-										<li>Impresión 3D</li>
+										<li class="m-1">Fotografía</li>
+										<button type="button" class="btn-success">Canjear!</button>
+										<li class="m-1">Impresión 3D</li>
+										<button type="button" class="btn-success">Canjear!</button>
 									</ul>
 								</div>
 							</div>
