@@ -44,6 +44,7 @@ public class ControladorUsuario {
 		List<Regalo> listarRegalosHechos = servicioRegalo.listarRegalosHechosPor(usuarioExistente);
 		model.put("lista",listarRegalosHechos);
 		model.put("CajaDeRegalo", new CajaDeRegalo());
+		model.put("Regalo", new Regalo());
 
 		Long valor = Long.parseLong(request.getSession().getAttribute("IDUSUARIO").toString());
 		model.put("usuario", servicioUsuario.getUsuarioById(valor));

@@ -37,7 +37,7 @@
 
 	<hr>
 
-	<div class="container-fluid contenedor text-center" id="experiencias">
+	<div class="container-fluid contenedor text-center">
 		<div class="masthead-heading mt-1">Elegí tu experiencia de la caja</div>
 		<h1 class="text-info">${caja.nombre}</h1>
 		<div class=" container-fluid d-flex row justify-content-center text-center">
@@ -55,7 +55,6 @@
 
 		</div>
 	</div>
-
 	<%@ include file="./layout/Footer.jsp"%>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,8 +100,7 @@
 									<c:forEach items="${lista}" var="caja">
 									<form:form method="POST" action="canjearRegalo"
 										modelAttribute="Regalo">
-										<form:hidden path="numeroDeCaja" value="${caja.id}" />
-										<form:label path="" value="hola"/>
+										<form:hidden path="id" value="${caja.id}" />
 										<form:button class="btn-success" type="submit">Canjear!</form:button>
 									</form:form>									
 									</c:forEach>

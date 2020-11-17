@@ -59,12 +59,15 @@ public class ControladorCajaDeRegalo {
 	@RequestMapping(value="canjearRegalo", method= RequestMethod.POST)
 	public ModelAndView elegirExperiencia(@ModelAttribute("Regalo") Regalo regalo) {
 		ModelMap model = new ModelMap();
-		Integer numeroCaja = regalo.getCajaDeRegalo().getNumeroDeCaja();
+//		Integer numeroCaja = regalo.getCajaDeRegalo().getNumeroDeCaja();
+		Integer numeroCaja = 8;
 		CajaDeRegalo caja = servicioCaja.buscarCajaPorNumero(numeroCaja);
 		List<Experiencia> experiencias = servicioCaja.listarExperiencias(caja.getNumeroDeCaja());
+		
+	System.err.println("Size de la lista =>" + experiencias.size());
 		model.put("caja", caja);
 		model.put("experiencias", experiencias);
-		
+	
 		
 		return new ModelAndView("canjeDelRegalo",model);
 	}
