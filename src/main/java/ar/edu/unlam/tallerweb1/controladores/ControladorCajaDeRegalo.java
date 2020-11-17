@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.CajaDeRegalo;
 import ar.edu.unlam.tallerweb1.modelo.Experiencia;
+import ar.edu.unlam.tallerweb1.modelo.Regalo;
 import ar.edu.unlam.tallerweb1.modelo.RegaloForm;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCajaDeRegalo;
 
@@ -53,8 +54,25 @@ public class ControladorCajaDeRegalo {
 		return new ModelAndView("caja-seleccionada",model);
 	}
 	
+
 	
+	@RequestMapping(value="canjearRegalo", method= RequestMethod.POST)
+	public ModelAndView elegirExperiencia(@ModelAttribute("Regalo") Regalo regalo) {
+		ModelMap model = new ModelMap();
+//		Integer numeroCaja = regalo.getCajaDeRegalo().getNumeroDeCaja();
+		Integer numeroCaja = 8;
+		CajaDeRegalo caja = servicioCaja.buscarCajaPorNumero(numeroCaja);
+		List<Experiencia> experiencias = servicioCaja.listarExperiencias(caja.getNumeroDeCaja());
+		
+	System.err.println("Size de la lista =>" + experiencias.size());
+		model.put("caja", caja);
+		model.put("experiencias", experiencias);
 	
+		
+		return new ModelAndView("canjeDelRegalo",model);
+	}
+	
+
 	@RequestMapping("/regalo-form")
 	public String regaloForm(Model model) {
 		// creamos la clase Caja De Regalo
@@ -73,7 +91,7 @@ public class ControladorCajaDeRegalo {
 		ModelMap modelo = new ModelMap();
 		CajaDeRegalo cajaDeRegalo = new CajaDeRegalo();
 		modelo.put("cajaDeRegalo", cajaDeRegalo);
-		return new ModelAndView("CrearCajaDeRegalo", modelo);
+		return new ModelAndView("crear-caja-regalo", modelo);
 	}
 	
 	@RequestMapping(value = "/crear-cajaDeRegalo", method = RequestMethod.POST)
@@ -83,3 +101,4 @@ public class ControladorCajaDeRegalo {
 		return new ModelAndView("home",model);
 	}
 }
+
